@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Favicon -->
+    <link rel="icon" href="/700225975.jpg" />
+    <!-- Viewport for responsiveness -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Manifest for PWA -->
+    <link rel="manifest" href="/manifest.json" />
+    <!-- Theme color for browser UI -->
+    <meta name="theme-color" content="#42b883" />
+    <title>Frappe UI App</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <div id="modals"></div>
+    <div id="popovers"></div>
+
+    <script>
+      window.csrf_token = '{{ frappe.session.csrf_token }}'
+    </script>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

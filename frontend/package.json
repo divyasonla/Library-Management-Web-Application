@@ -1,0 +1,32 @@
+{
+  "name": "frappe-ui-frontend",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "vite build --base=/assets/library/frontend/ && yarn copy-html-entry",
+    "copy-html-entry": "cp ../library/public/frontend/index.html ../library/www/frontend.html",
+    "dev": "vite",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/vue-fontawesome": "^3.0.8",
+    "feather-icons": "^4.29.2",
+    "frappe-client": "^2.0.2",
+    "frappe-js-sdk": "^1.7.0",
+    "frappe-ui": "^0.1.72",
+    "lucide-vue-next": "^0.475.0",
+    "register-service-worker": "^1.7.2",
+    "vue": "^3.5.12",
+    "vue-router": "^4.4.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.1.4",
+    "@vue/cli-plugin-pwa": "~5.0.0",
+    "autoprefixer": "^10.4.2",
+    "postcss": "^8.4.5",
+    "tailwindcss": "^3.4.14",
+    "vite": "^5.4.10"
+  }
+}
