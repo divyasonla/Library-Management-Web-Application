@@ -1,0 +1,88 @@
+<!-- <div>
+	<a href="{{ doc.route }}">{{ doc.name }}</a>
+	<p>{{ full_name }}</p>
+	<p> {{ email }}</p>
+	<p> {{ phone }}</p>
+	<p> {{ address }}</p>
+</div> -->
+
+<style>
+    body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    }
+    .add-member-btn {
+    display: inline-block;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.add-member-btn:hover {
+    background: linear-gradient(135deg, #0056b3, #00408a);
+    transform: scale(1.05);
+}
+
+.member-card {
+    background: rgb(255, 255, 255);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    width: 380px;
+    text-align: center;
+    margin: 20px;
+}
+
+
+
+
+.member-card a:hover {
+    color: #00408a;
+}
+
+.member-card p {
+    font-size: 16px;
+    color: #444444;
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
+.member-card .about-more-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+
+</style>
+    <div>
+        <a href="library-members/new" class="add-member-btn">Add Member</a>  
+              <div class="member-card">
+        <p>{{ doc.first_name }}</p>
+        <p><strong>Full Name:</strong> {{ doc.full_name }}</p>
+        <p><strong>Email:</strong> {{ doc.email }}</p>
+        <a href="{{ doc.route }}" 
+        style="display: inline-block; padding: 12px 24px; background-color: #007bff; color: white; text-decoration: none; font-size: 18px; font-weight: bold; border-radius: 5px; transition: background-color 0.3s ease;">
+         About more
+     </a>
+        </div>
+</div>

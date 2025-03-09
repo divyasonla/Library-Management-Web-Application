@@ -1,21 +1,27 @@
 {
  "actions": [],
+ "allow_guest_to_view": 1,
  "allow_import": 1,
- "autoname": "BOOK.#####",
+ "allow_rename": 1,
+ "autoname": "BOOK.####",
  "creation": "2025-02-20 10:29:56.274771",
+ "default_view": "List",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "title",
   "author",
   "publisher",
-  "book_img",
-  "image_view",
+  "language_code",
+  "average_rating",
+  "ratings_count",
   "column_break_loie",
   "isbn",
   "num_pages",
   "stock",
-  "status"
+  "status",
+  "is_published",
+  "route"
  ],
  "fields": [
   {
@@ -24,6 +30,7 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Title",
+   "no_copy": 1,
    "reqd": 1
   },
   {
@@ -71,20 +78,37 @@
    "reqd": 1
   },
   {
-   "fieldname": "book_img",
-   "fieldtype": "Attach Image",
-   "label": "Book Img"
+   "fieldname": "language_code",
+   "fieldtype": "Data",
+   "label": "Language Code"
   },
   {
-   "fieldname": "image_view",
-   "fieldtype": "Image",
-   "label": "Image View",
-   "options": "book_img"
+   "fieldname": "average_rating",
+   "fieldtype": "Rating",
+   "label": "Average Rating"
+  },
+  {
+   "fieldname": "ratings_count",
+   "fieldtype": "Data",
+   "label": "Ratings Count"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_published",
+   "fieldtype": "Check",
+   "label": "Is Published"
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "label": "Route"
   }
  ],
+ "has_web_view": 1,
  "index_web_pages_for_search": 1,
+ "is_published_field": "is_published",
  "links": [],
- "modified": "2025-02-22 12:28:46.733098",
+ "modified": "2025-03-09 14:56:48.250110",
  "modified_by": "Administrator",
  "module": "Library",
  "name": "Books",
@@ -128,10 +152,11 @@
    "write": 1
   }
  ],
+ "route": "book",
+ "show_name_in_global_search": 1,
  "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],
- "title_field": "title",
- "translated_doctype": 1
+ "title_field": "title"
 }

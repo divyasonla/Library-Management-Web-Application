@@ -2,7 +2,6 @@
   <div class="p-6  text-white">
     <h1 class="text-3xl font-bold mb-6">ADD MEMBER</h1>
 
-    <!-- Member Form -->
     <div class="mb-6 p-6 bg-gray-800 rounded-lg shadow-lg">
       <h2 class="text-lg font-semibold mb-4">{{ isEditing ? 'Update' : 'Add' }} Member</h2>
 
@@ -39,11 +38,9 @@
 import { ref } from 'vue';
 import { call } from "frappe-ui";
 
-// Member form data
 const newMember = ref({ full_name: "", email: "", phone: "" });
 const isEditing = ref(false);
 
-// Save (Insert) Member into Frappe
 const saveMember = async () => {
   try {
     await call('frappe.client.insert', {
@@ -55,7 +52,6 @@ const saveMember = async () => {
       }
     });
     alert("Member added successfully!");
-    // Optionally, reset form fields after successful insertion
     newMember.value = { full_name: "", email: "", phone: "" };
   } catch (error) {
     console.error("Error adding member:", error);
@@ -65,7 +61,6 @@ const saveMember = async () => {
 </script>
 
 <style>
-/* Customize scrollbar for better UI */
 ::-webkit-scrollbar {
   width: 8px;
 }

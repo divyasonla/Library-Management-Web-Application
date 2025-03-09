@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_guest_to_view": 1,
  "allow_import": 1,
  "allow_rename": 1,
  "autoname": "MEM.######",
@@ -7,18 +8,21 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "first_name",
+  "last_name",
   "full_name",
   "email",
   "phone",
-  "address"
+  "address",
+  "available",
+  "route"
  ],
  "fields": [
   {
    "fieldname": "full_name",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Full Name",
-   "reqd": 1
+   "label": "Full Name"
   },
   {
    "fieldname": "email",
@@ -38,11 +42,34 @@
    "fieldname": "address",
    "fieldtype": "Small Text",
    "label": "Address"
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "label": "Route"
+  },
+  {
+   "fieldname": "first_name",
+   "fieldtype": "Data",
+   "label": "First Name"
+  },
+  {
+   "fieldname": "last_name",
+   "fieldtype": "Data",
+   "label": "Last Name"
+  },
+  {
+   "default": "1",
+   "fieldname": "available",
+   "fieldtype": "Check",
+   "label": "Available"
   }
  ],
+ "has_web_view": 1,
  "index_web_pages_for_search": 1,
+ "is_published_field": "available",
  "links": [],
- "modified": "2025-02-22 13:18:52.939496",
+ "modified": "2025-03-09 11:45:15.363741",
  "modified_by": "Administrator",
  "module": "Library",
  "name": "Member",
@@ -86,6 +113,7 @@
    "write": 1
   }
  ],
+ "route": "Members",
  "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",

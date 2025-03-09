@@ -1,15 +1,11 @@
 <template>
-  <!-- Main Container -->
   <div class="text-white p-6 ">
-    <!-- Page Title & Subtitle -->
     <div class="mb-6">
       <h1 class="text-3xl font-bold">Book</h1>
       <p class="text-[rgb(145,209,255)]">List of all available books</p>
     </div>
 
-    <!-- Search & Add Book Section -->
     <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
-      <!-- Search Box -->
       <div class="mb-4 w-full md:w-1/3 md:mb-0">
         <input 
           v-model="searchQuery" 
@@ -19,7 +15,6 @@
         />
       </div>
 
-      <!-- Add New Book Button -->
       <button 
         @click="toggleForm" 
         class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-md transition text-white"
@@ -28,7 +23,6 @@
       </button>
     </div>
 
-    <!-- Add / Update Book Form -->
     <transition name="fade">
       <div v-if="showForm" class="mb-6 p-4 bg-[#21295c] rounded-md shadow-md">
         <h2 class="text-xl font-semibold mb-4">{{ isEditing ? 'Update' : 'Add' }} Book</h2>
@@ -90,30 +84,24 @@
         :key="book.name" 
         class="p-4 bg-[#21295c] rounded-md shadow-md flex flex-col justify-between transition transform hover:-translate-y-1 hover:shadow-lg"
       >
-      <div class="mb-3">
-      <img 
-        v-if="book.book_img" 
-        :src="book.book_img" 
-        alt="Book Cover" 
-        class="w-full h-40 object-cover rounded"
-      />
-      <div v-else class="w-full h-40 bg-gray-600 rounded flex items-center justify-center text-gray-300">
-        No Image
-      </div>
-    </div>
+    
 
         <!-- Book Info -->
         <div>
           <h1 class="text-lg font-bold mb-1 text-blue-400">{{ book.name }}</h1>
-          <h2 class="text-lg font-bold mb-1 text-blue-400">
-            Title: {{ book.title }}
-          </h2>
-          <h3 class="text-sm text-gray-300 mb-2">
+          <div class="text-sm text-gray-300 mb-2">
+              <h3>
+                <strong>Title: </strong>
+             {{ book.title }}
+          </h3>
+          <h3>
             Author: {{ book.author }}
           </h3>
             <h3>ISBN: {{ book.isbn }}</h3>
            <h3>Stock: {{ book.stock }}</h3> 
             <h3>Status: {{ book.status }}</h3>
+          </div>
+         
         </div>
 
         <!-- Actions -->
@@ -137,7 +125,6 @@
     <!-- No Results -->
     <p v-else class="text-gray-500 text-lg text-center mt-10">No results found.</p>
 
-    <!-- Pagination -->
     <div class="flex justify-center mt-6" v-if="filteredBooks.length > itemsPerPage">
       <button 
         @click="prevPage" 
@@ -163,15 +150,13 @@ import { call } from "frappe-ui";
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 
-// Fetch Books List from Frappe
 const BookList = ref([]);
 const fetchBooks = async () => {
   try {
-    // Set limit_page_length to 0 to fetch all records
     const response = await call('frappe.client.get_list', {
       doctype: "Books",
-      fields: ['name', 'title', 'author', 'isbn', 'stock', 'status', 'book_img'],
-      limit_page_length: 0  // This tells Frappe to return all records
+      fields: ['name', 'title', 'author', 'isbn', 'stock', 'status'],
+      limit_page_length: 0 
     });
     BookList.value = response;
   } catch (error) {
@@ -189,7 +174,6 @@ const newBook = ref({ title: "", author: "", isbn: "", stock: "", status: "" });
 const isEditing = ref(false);
 const editingBookId = ref(null);
 
-// Save (Add / Update) Book
 const saveBook = async () => {
   try {
     if (isEditing.value) {
@@ -249,14 +233,12 @@ const deleteBook = async (bookId) => {
   }
 };
 
-// Reset Form
 const resetForm = () => {
   newBook.value = { title: "", author: "", isbn: "", stock: "", status: "" };
   isEditing.value = false;
   editingBookId.value = null;
 };
 
-// Search & Pagination
 const searchQuery = ref("");
 const currentPage = ref(1);
 const itemsPerPage = 20;
@@ -291,7 +273,6 @@ const prevPage = () => {
 </script>
 
 <style scoped>
-/* Transition for form (optional) */
 .fade-enter-active, .fade-leave-active {
   transition: opacity .3s;
 }

@@ -2,11 +2,12 @@
   <div class="layout">
     <!-- Fixed Sidebar -->
     <div class="sidebar">
-      <h2 class="sidebar-title">Library Sidebar</h2>
+      <h2 class="sidebar-title">Library</h2>
       <h2 class="welcome-msg">
         Welcome {{ session.user }}!
       </h2>
-      <img src="" alt="Profile">
+      <img :src="session.userAvatar" alt="Profile" class="profile-img" />
+
       <ul>
         <li
           v-for="(item, index) in menuItems"
@@ -21,22 +22,7 @@
 
     <!-- Main Content -->
     <div class="main-content">
-      <div v-if="selectedMenu === 'Books'">
-        <book />
-      </div>
-      <div v-if="selectedMenu === 'Member List'">
-        <member />
-      </div>
-      <div v-if="selectedMenu === 'Add New Member'">
-        <h2>Add New Member</h2>
-        <addmember />
-      </div>
-      <div v-if="selectedMenu === 'Transactions'">
-        <transactions />
-      </div>
-      <div v-if="selectedMenu === 'Issue'">
-        <issue />
-      </div>
+      <component :is="currentComponent"></component>
     </div>
   </div>
 </template>
@@ -47,6 +33,7 @@ import member from './Member.vue'
 import addmember from './AddMember.vue'
 import transactions from './Transactions.vue'
 import issue from './Issue.vue'
+import login from './Login.vue'
 import { session } from '../data/session'
 
 export default {
@@ -56,66 +43,92 @@ export default {
     member,
     addmember,
     transactions,
-    issue
+    issue,
+    login
   },
   data() {
     return {
-      menuItems: ['Books', 'Member List', 'Add New Member', 'Transactions', 'Issue'],
+      menuItems: ['Books', 'Member List', 'Add New Member', 'Transactions', 'Issue', 'Login'],
       selectedMenu: 'Books',
       session: session
     };
+  },
+  computed: {
+    currentComponent() {
+      switch (this.selectedMenu) {
+        case 'Books':
+          return 'book';
+        case 'Member List':
+          return 'member';
+        case 'Add New Member':
+          return 'addmember';
+        case 'Transactions':
+          return 'transactions';
+        case 'Issue':
+          return 'issue';
+        case 'Login':
+          return 'login';
+        default:
+          return 'book';
+      }
+    }
   }
 };
 </script>
 
 <style scoped>
-/* Layout container to handle sidebar and main content */
 .layout {
   display: flex;
   height: 100vh;
   overflow: hidden;
 }
 
-/* Fixed Sidebar styles */
 .sidebar {
   position: fixed;
   top: 0;
   left: 0;
-  width: 16rem; /* 64px equivalent to Tailwind w-64 */
+  width: 16rem;
   height: 100%;
   background-color: #21295c;
   color: white;
-  padding: 1.25rem; /* p-5 */
-  overflow-y: auto; /* Agar sidebar me bhi scroll karna pade */
+  padding: 1.25rem;
+  overflow-y: auto;
 }
 
 .sidebar-title {
-  font-size: 1.125rem; /* text-lg */
+  font-size: 1.125rem;
   font-weight: bold;
-  margin-bottom: 1.25rem; /* mb-5 */
+  margin-bottom: 1.25rem;
 }
 
 .welcome-msg {
   font-weight: bold;
   font-size: 1.125rem;
-  color: #4b5563; /* text-gray-600 */
-  margin-bottom: 1rem; /* mb-4 */
+  color: #f3f4f6;
+  margin-bottom: 1rem;
+}
+
+.profile-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
 }
 
 .menu-item {
   padding: 0.5rem;
   cursor: pointer;
-  border-radius: 0.375rem; /* rounded */
+  border-radius: 0.375rem;
   transition: background-color 0.2s;
 }
 
 .menu-item:hover {
-  background-color: #374151; /* hover:bg-gray-700 */
+  background-color: #374151;
 }
 
-/* Main content styles */
 .main-content {
-  margin-left: 16rem; /* Same as sidebar width */
+  margin-left: 16rem;
   padding: 1.25rem;
   width: calc(100% - 16rem);
   height: 100vh;

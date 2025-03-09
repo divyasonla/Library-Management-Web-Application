@@ -1,0 +1,42 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+
+<style>
+    .member-details {
+        max-width: 900px;
+        margin: 80px auto;
+        padding: 40px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        background: #f9f9f9;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+
+    .member-details p {
+        font-size: 16px;
+        color: #333;
+        margin: 10px 0;
+    }
+
+    .member-details strong {
+        color: #007bff;
+    }
+</style>
+
+<div>
+
+<h1 style="color: #333; font-size: 38px; margin-bottom: 10px;">Details About Member</h1>
+<div class="member-details">
+    <p><strong>First Name:</strong> {{ first_name }}</p>
+    <p><strong>Last Name:</strong> {{ last_name }}</p>
+    <p><strong>Full Name:</strong> {{ full_name }}</p>
+    <p><strong>Email:</strong> {{ email }}</p>
+    <p><strong>Phone:</strong> {{ phone }}</p>
+    <p><strong>Address:</strong> {{ address }}</p>
+</div>
+</div>
+
+{% endblock %}

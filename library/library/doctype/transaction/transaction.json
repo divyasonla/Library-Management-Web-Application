@@ -1,20 +1,23 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "TD.########",
+ "autoname": "status.########",
  "creation": "2025-02-20 11:40:16.462766",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "book",
   "member",
+  "book",
+  "member_email",
   "issue_date",
   "return_date",
+  "quantity",
   "column_break_wcus",
   "rent_fees",
   "status",
   "transaction_date",
-  "outstanding_dept"
+  "amended_from",
+  "total_days"
  ],
  "fields": [
   {
@@ -40,6 +43,7 @@
    "label": "Return Date"
   },
   {
+   "description": "Per day 10 Rs per Book",
    "fieldname": "rent_fees",
    "fieldtype": "Currency",
    "label": "Rent Fees"
@@ -60,14 +64,37 @@
    "label": "Transaction Date"
   },
   {
-   "fieldname": "outstanding_dept",
-   "fieldtype": "Currency",
-   "label": "Outstanding Dept"
+   "fetch_from": "member.email",
+   "fieldname": "member_email",
+   "fieldtype": "Read Only",
+   "label": "Member Email"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Transaction",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "quantity",
+   "fieldtype": "Int",
+   "label": "Quantity"
+  },
+  {
+   "description": "You cannot keep the book for more than 7 days.\n",
+   "fieldname": "total_days",
+   "fieldtype": "Int",
+   "label": "Total Days"
   }
  ],
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2025-02-27 10:47:29.933065",
+ "modified": "2025-03-09 14:40:38.313256",
  "modified_by": "Administrator",
  "module": "Library",
  "name": "Transaction",

@@ -1,0 +1,58 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+<h3>{{ name }}</h3>
+<p><strong>Title : </strong>{{ title }}</p>
+<p><strong>Author : </strong>{{ author }}</p>
+<p><strong>ISBN : </strong>{{ isbn }}</p>
+<p><strong>Num Pages : </strong>{{ num_pages }}</p>
+<p><strong>Publisher : </strong>{{ publisher }}</p>
+<p><strong>Stock : </strong>{{ stock }}</p>
+<p><strong>Language Code : </strong>{{ language_code }}</p>
+<p><strong>Average Rating : </strong> {{ average_rating}}</p>
+<p><strong>Status : </strong>{{ status }}</p>
+<a href="transactions-form/new" class="btn-primary"> issue Book </a>
+
+
+<style>
+   body {
+       font-family: Arial, sans-serif;
+       background-color: #f8f9fa;
+       padding: 20px;
+   }
+
+   h1 {
+       color: #333;
+       margin-bottom: 10px;
+   }
+
+   p {
+       font-size: 16px;
+       color: #555;
+       margin: 5px 0;
+   }
+
+   strong {
+       color: #000;
+   }
+
+   .btn-primary {
+       display: inline-block;
+       padding: 10px 20px;
+       background-color: #007bff; 
+       color: white;
+       text-decoration: none;
+       font-size: 16px;
+       font-weight: bold;
+       border-radius: 5px;
+       transition: background-color 0.3s ease;
+   }
+
+   .btn-primary:hover {
+       background-color: #0056b3;
+   }
+</style>
+
+{% endblock %}
+
+
