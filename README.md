@@ -6,13 +6,13 @@ This Library Management Web Application is designed to help librarians efficient
 
 ## Features
 
-# Base Library System
+#### Base Library System
 
-# Books Management: Add, update, delete, and search books.
+#### Books Management: Add, update, delete, and search books.
 
-# Member Management: Add, update, delete, and search members.
+#### Member Management: Add, update, delete, and search members.
 
-# Transactions:
+#### Transactions:
 
 Issue a book to a member.
 
@@ -24,7 +24,7 @@ Ensure a member’s outstanding debt does not exceed Rs. 500.
 
 Search Books: Search books by title and author.
 
-# Data Import Integration
+## Data Import Integration
 
 Import books from the Frappe Library API.
 
