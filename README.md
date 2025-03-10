@@ -76,7 +76,7 @@ Start the development server:
 bench start
 
 
-## Scren Shots 
+## Screen Shots 
 
 ![Screenshot from 2025-03-10 11-10-05](https://github.com/user-attachments/assets/b66f17a3-ebe5-4743-abd0-0016865e4164)
 
@@ -91,5 +91,66 @@ bench start
 ![Screenshot from 2025-03-10 12-02-24](https://github.com/user-attachments/assets/bdca4fa4-3a04-435e-855c-7e4bd6cc625b)
 
 ## Debt Control: Limit debt to Rs. 500 per member
+
+
+![Screenshot from 2025-03-10 12-11-53](https://github.com/user-attachments/assets/16456b2e-a259-4722-b2d4-3cb3dec14c31)
+
+## Transactions: Shows member's email, book Issued or Return and Rent Fees
+
+![Screenshot from 2025-03-10 12-14-38](https://github.com/user-attachments/assets/63609334-70f0-44e6-8eec-d8873a93507b)
+
+## Search: Search Books by title, authors and publisher
+
+![Screenshot from 2025-03-10 12-16-23](https://github.com/user-attachments/assets/32cee2b6-0518-480b-a0fd-6425f526841d)
+
+
+
+## Steps
+
+#### Clone the repository:
+
+git clone https://github.com/divyasonla/Library-Management-Web-Application.git
+cd library
+
+#### Install dependencies:
+
+pip install -r requirements.txt
+
+#### Setup Frappe and create a site:
+
+bench new-site library.localhost
+bench --site library.localhost install-app library
+
+### Start the development server:
+
+bench start 
+
+## API Integration Guide
+
+API Endpoint
+
+#### To fetch books, use the following API:
+
+https://frappe.io/api/method/frappe-library?page=<page_number>&title=<book_title>
+
+#### Example Usage
+
+curl https://frappe.io/api/method/frappe-library?page=2&title=harry
+
+#### API Parameters
+
+page: Page number of results.
+
+title: Book title for filtering.
+
+authors: Author name for filtering.
+
+isbn: ISBN number for specific books.
+
+publisher: Filter by publisher.
+
+#### ScreenShot
+![Screenshot from 2025-03-10 11-13-20](https://github.com/user-attachments/assets/78a98e8c-53f8-4a8b-ac8a-d08520b1d526)
+
 
 
