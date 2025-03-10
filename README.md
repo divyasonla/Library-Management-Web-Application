@@ -1,7 +1,8 @@
-## Library
+## Library Management System
 
 for managing
 
-#### License
+#### Table Of Content 
+
 
 mit
