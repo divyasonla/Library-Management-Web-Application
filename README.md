@@ -32,3 +32,47 @@ Specify parameters such as title, author, publisher, and number of books.
 
 Automate book entry creation in the system.
 
+## Technology Stack
+
+Backend: Python (Frappe Framework)
+
+Frontend: vue.js, frappe UI 
+
+Database: MariaDB
+
+API Integration: Frappe Library API
+
+
+## Installation & Setup
+
+#### Prerequisites
+
+Python (3.x)
+
+Frappe Framework installed
+
+MariaDB/MySQL database
+
+Frappe-UI  (for frontend)
+
+#### Steps
+
+Clone the repository:
+
+git clone https://github.com/yourusername/library-management.git
+cd library-management
+
+Install dependencies:
+
+pip install -r requirements.txt
+
+Setup Frappe and create a site:
+
+bench new-site library.localhost
+bench --site library.localhost install-app library_management
+
+Start the development server:
+
+bench start
+
+
